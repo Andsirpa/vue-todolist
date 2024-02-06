@@ -31,9 +31,26 @@
     <div id="app" class="container mt-5">
         <h1 class="text-center mb-4">TO DO LIST</h1>
         <main class="container">
-            <div v-for="(task, index) in tasks" :key="index">
-                <p :class="{ 'line-through': task.done }">{{ task.text }}</p>
+
+            <div class="row align-items-end">
+                <div class="col-9">
+                    <label for="" class="form-label">Nuova task</label>
+
+                    <input type="text" class="form-control" id="" name="" aria-describedby="helpId"
+                        placeholder="Aggiungi un attività" v-model="newTask.text" :keyUp.enter="addTask">
+
+                </div>
+                <div class="col-3">
+                    <button class=" border border-opacity-50 rounded" @click="addTask">Aggiungi</button>
+                </div>
+
             </div>
+            <div class="bg-secondary-subtle rounded p-3 mt-5" v-for="(element,index) in tasks" :key="index">
+                <div class="d-flex justify-content-between">
+                    <p class="text-capitalize" :class="{ 'line-through': element.done }" @click="toggleDone(index)">
+                        {{element.text}}</p>
+                    <span @click="removeTask(index)"><i class="fa-solid fa-xmark"></i></span>
+                </div>
         </main>
     </div>
 
