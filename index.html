@@ -27,11 +27,15 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="my-5">Titolo</h1>
-        <code class="fs-3" id="result">Esempio</code>
-    </div>
 
+    <div id="app" class="container mt-5">
+        <h1 class="text-center mb-4">TO DO LIST</h1>
+        <main class="container">
+            <div v-for="(task, index) in tasks" :key="index">
+                <p :class="{ 'line-through': task.done }">{{ task.text }}</p>
+            </div>
+        </main>
+    </div>
 
 
 
